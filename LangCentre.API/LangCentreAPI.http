@@ -1,0 +1,6 @@
+@LangCentreAPI_HostAddress = http://localhost:5078
+
+GET {{LangCentreAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
