@@ -1,6 +1,7 @@
 using LangCentre.Infra.Persistent;
 using LangCentreAPI.Features.Course;
 using LangCentreAPI.Features.Student;
+using MediatR;
 using Serilog;
 
 WebApplication.CreateBuilder(args)
@@ -14,6 +15,8 @@ internal static class ApiExtensions
     public static WebApplicationBuilder AddServices(this WebApplicationBuilder builder)
     {
         builder.Services.AddPersistent(builder.Configuration);
+
+        builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
         builder.Services.AddCourseServices();
         builder.Services.AddStudentServices();

@@ -1,8 +1,9 @@
 using LangCentre.Infra.Persistent;
+using MediatR;
 
 namespace LangCentreAPI.Features.Student.UseCases;
 
-public record EnrollStudentRequest
+public record EnrollStudentRequest : IRequest<Guid>
 {
     public Guid StudentId { get; init; }
     public Guid ClassId { get; init; }
@@ -15,11 +16,11 @@ public static class EnrollStudentRoute
         api.MapPost("/{studentId:guid}/enrol", async (
             Guid studentId,
             EnrollStudentBody body,
-            IEnrollStudentHandler handler,
+            IMediator mediator,
             CancellationToken ct) =>
         {
             var request = new EnrollStudentRequest { StudentId = studentId, ClassId = body.ClassId };
-            var id = await handler.Handle(request, ct);
+            var id = await mediator.Send(request, ct);
             return Results.Ok(new { id });
         });
     }
@@ -30,12 +31,7 @@ public record EnrollStudentBody
     public Guid ClassId { get; init; }
 }
 
-public interface IEnrollStudentHandler
-{
-    Task<Guid> Handle(EnrollStudentRequest request, CancellationToken ct);
-}
-
-public class EnrollStudentHandler(LangCentreDbContext dbContext) : IEnrollStudentHandler
+public class EnrollStudentHandler(LangCentreDbContext dbContext) : IRequestHandler<EnrollStudentRequest, Guid>
 {
     public async Task<Guid> Handle(EnrollStudentRequest request, CancellationToken ct)
     {
