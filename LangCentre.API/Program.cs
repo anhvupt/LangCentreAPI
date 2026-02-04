@@ -1,5 +1,6 @@
 using LangCentre.Infra.Persistent;
 using LangCentreAPI.Features.Course;
+using LangCentreAPI.Features.Student;
 using Serilog;
 
 WebApplication.CreateBuilder(args)
@@ -15,6 +16,7 @@ internal static class ApiExtensions
         builder.Services.AddPersistent(builder.Configuration);
 
         builder.Services.AddCourseServices();
+        builder.Services.AddStudentServices();
         
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -53,7 +55,8 @@ internal static class ApiExtensions
     {
         var api = app.MapGroup("api/v1")
             .WithOpenApi()
-            .MapCourseRoutes();
+            .MapCourseRoutes()
+            .MapStudentRoutes();
         
         app.MapHealthChecks("/health");
     }

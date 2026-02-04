@@ -30,21 +30,12 @@ public interface IAddCourseHandler
     Task<Guid> Handle(AddCourseRequest request, CancellationToken ct);
 };
 
-public class AddCourseHandler(LangCentreDbContext dbContext): IAddCourseHandler
+public class AddCourseHandler(LangCentreDbContext dbContext) : IAddCourseHandler
 {
     public async Task<Guid> Handle(AddCourseRequest request, CancellationToken ct)
     {
-        var now = DateTime.UtcNow;
-        
-        var entity = new LangCentre.Domain.Entities.Course
-        {
-            Id = Guid.NewGuid(),
-            Name = request.Name,
-            Level = request.Level,
-            CreatedAt = now,
-            UpdatedAt = now
-        };
-        
+        var entity = LangCentre.Domain.Entities.Course.Create(request.Name, request.Level);
+
         dbContext.Courses.Add(entity);
         await dbContext.SaveChangesAsync(ct);
 
