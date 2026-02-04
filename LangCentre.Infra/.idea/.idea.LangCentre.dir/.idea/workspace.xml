@@ -2,36 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24243120-c406-402e-8716-1b697c6c4ab3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Course/CourseRoutes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Course/UseCases/AddCourse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Course/UseCases/DeleteCourse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Course/UseCases/GetCourseDetails.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Course/UseCases/GetCourseList.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Course/UseCases/UpdateCourse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Instruction/InstructionRoutes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/LangClass/LangClassRoutes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Student/StudentRoutes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Student/UseCases/AddStudent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Student/UseCases/DeleteStudent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Student/UseCases/EnrollStudent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Student/UseCases/GetStudentDetails.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Student/UseCases/GetStudentList.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Student/UseCases/UpdateStudent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.API/LangCentre.API.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.Domain/Entities/BaseEntity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.Domain/Entities/Class.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.Domain/Entities/ClassGroup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.Domain/Entities/Course.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.Domain/Entities/Enrolment.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.Domain/Entities/Instructor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.Domain/Entities/Student.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LangCentre.Domain/Enums/LangLevel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.LangCentre.dir/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.LangCentre.dir/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.LangCentre.dir/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.LangCentre.dir/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Persistent/AddPersistentExtension.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Persistent/DbContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Course/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LangCentre.API/Features/Course/CourseRoutes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Course/CourseRoutes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LangCentre.API/Features/Course/UseCases/AddCourse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Course/UseCases/AddCourse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LangCentre.API/Features/Course/UseCases/GetCourseList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LangCentre.API/Features/Course/UseCases/GetCourseList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LangCentre.API/LangCentre.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../LangCentre.API/LangCentre.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LangCentre.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LangCentre.API/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LangCentre.API/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LangCentre.API/appsettings.Development.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +44,7 @@
       <updated>1763546338809</updated>
       <workItem from="1763546339997" duration="6000" />
       <workItem from="1763547413213" duration="4000" />
+      <workItem from="1765679317661" duration="15000" />
     </task>
     <servers />
   </component>

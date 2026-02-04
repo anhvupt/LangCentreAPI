@@ -1,6 +1,53 @@
+using LangCentre.Domain.Enums;
+using LangCentre.Infra.Persistent;
+
 namespace LangCentreAPI.Features.Course.UseCases;
 
-public class AddCourse
+public record AddCourseRequest
 {
-    
+    public Guid Id { get; set; }
+    public string Name { get; set; } = default!;
+    public LangLevel Level { get; set; }
+}
+
+public static class AddCourseRoute
+{
+    public static void MapAddCourseRoute(this IEndpointRouteBuilder api)
+    {
+        api.MapPost("/", async (
+            AddCourseRequest request,
+            IAddCourseHandler handler,
+            CancellationToken ct) =>
+        {
+            var id = await handler.Handle(request, ct);
+            return Results.Ok(new { id });
+        });
+    }
+}
+
+public interface IAddCourseHandler
+{
+    Task<Guid> Handle(AddCourseRequest request, CancellationToken ct);
+};
+
+public class AddCourseHandler(LangCentreDbContext dbContext): IAddCourseHandler
+{
+    public async Task<Guid> Handle(AddCourseRequest request, CancellationToken ct)
+    {
+        var now = DateTime.UtcNow;
+        
+        var entity = new LangCentre.Domain.Entities.Course
+        {
+            Id = Guid.NewGuid(),
+            Name = request.Name,
+            Level = request.Level,
+            CreatedAt = now,
+            UpdatedAt = now
+        };
+        
+        dbContext.Courses.Add(entity);
+        await dbContext.SaveChangesAsync(ct);
+
+        return entity.Id;
+    }
 }

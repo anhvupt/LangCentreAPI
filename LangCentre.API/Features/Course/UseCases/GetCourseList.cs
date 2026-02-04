@@ -1,6 +1,48 @@
+using LangCentre.Domain.Enums;
+using LangCentre.Infra.Persistent;
+using Microsoft.EntityFrameworkCore;
+
 namespace LangCentreAPI.Features.Course.UseCases;
 
-public class GetCourseList
+public record GetCourseListRequest;
+public record GetCourseItemListResponse
 {
-    
+    public Guid Id { get; set; }
+    public string Name { get; set; } = default!;
+    public LangLevel Level { get; set; }
+}
+
+public static class GetCourseListRoute
+{
+    public static IEndpointRouteBuilder MapGetCourseListRoute(this IEndpointRouteBuilder api)
+    {
+        api.MapGet("/", async ([AsParameters] GetCourseListRequest request, IGetCourseListHandler handler, CancellationToken ct) =>
+        {
+            var data = await handler.Handle();
+            return Results.Ok(new { data });
+        });
+        
+        return api;
+    }
+}
+
+public interface IGetCourseListHandler
+{
+    Task<List<GetCourseItemListResponse>> Handle();
+}
+
+public class GetCourseListHandler(LangCentreDbContext dbContext) : IGetCourseListHandler
+{
+    public async Task<List<GetCourseItemListResponse>> Handle()
+    {
+        return await dbContext.Courses.AsNoTracking()
+            .OrderBy(x => x.CreatedAt)
+            .Select(x => new GetCourseItemListResponse
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Level = x.Level
+            })
+            .ToListAsync();
+    }
 }
